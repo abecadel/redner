@@ -20,7 +20,7 @@ if(REDNER_CUDA)
     set(CMAKE_CUDA_STANDARD 11)
     if(NOT WIN32)
         # Hack: for some reason the line above doesn't work on some Linux systems.
-        set(CUDA_NVCC_FLAGS "${CUDA_NVCC_FLAGS} -std=c++11")
+        set(CUDA_NVCC_FLAGS "${CUDA_NVCC_FLAGS} -std=c++14")
     endif()
     # We don't set REQUIRED here as the main OptiX lib will not be found
     # (only OptiX Prime is required)
@@ -179,7 +179,7 @@ elseif(APPLE)
     set_target_properties(redner PROPERTIES INSTALL_RPATH "@loader_path")
 endif()
 
-set_property(TARGET redner PROPERTY CXX_STANDARD 11)
+set_property(TARGET redner PROPERTY CXX_STANDARD 14)
 set_target_properties(redner PROPERTIES PREFIX "")
 # Still enable assertion in release mode
 string( REPLACE "/DNDEBUG" "" CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE}")
